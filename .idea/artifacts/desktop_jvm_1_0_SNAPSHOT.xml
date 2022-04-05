@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="desktop-jvm-1.0-SNAPSHOT">
+    <output-path>H:/build/Obsidian/desktop/libs</output-path>
+    <root id="archive" name="desktop-jvm-1.0-SNAPSHOT.jar">
+      <element id="module-output" name="Obsidian.desktop.jvmMain" />
+    </root>
+  </artifact>
+</component>

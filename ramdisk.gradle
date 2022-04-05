@@ -1,0 +1,28 @@
+ext {
+    buildRamdiskDir = null
+}
+
+String getRamdiskDir() {
+    Properties properties = new Properties()
+    File propertyFile = new File(rootDir.getAbsolutePath() + "/local.properties")
+    if (propertyFile.exists()) {
+        properties.load(propertyFile.newDataInputStream())
+        return properties.getProperty('ramdisk.dir')
+    }
+
+    return null
+}
+
+allprojects {
+    if (buildRamdiskDir == null) {
+        buildRamdiskDir = getRamdiskDir()
+        if (buildRamdiskDir == null) {
+            buildRamdiskDir = ""
+        }
+        System.err.println("Build Ramdisk: " + buildRamdiskDir)
+    }
+
+    if (buildRamdiskDir != null && buildRamdiskDir.length() > 0) {
+        buildDir = "${buildRamdiskDir}/build/${rootProject.name}/${project.name}"
+    }
+}
